@@ -10,6 +10,7 @@ class PhoneBook
     private:
         Contact _contacts[8];
         size_t  _index;
+        size_t  _total;
 
     public:
         PhoneBook(); // createur
