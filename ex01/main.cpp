@@ -9,6 +9,7 @@ int main()
     {
         std::cout << "waiting for commande [ADD], [SEARCH] or [EXIT]" << '\n';
         std::cin >> cmd;
+        std::cin.ignore();
         if (cmd == "")
             return (0);
         else if (cmd == "ADD")

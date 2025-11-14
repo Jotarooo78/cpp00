@@ -2,6 +2,8 @@
 
 PhoneBook::PhoneBook() : _index(0), _total(0){}
 
+PhoneBook::~PhoneBook(){}
+
 std::string formatField(std::string field){
     if (field.length() > 10){
         field = field.substr(0, 9);
@@ -65,9 +67,9 @@ void PhoneBook::add()
 
 void PhoneBook::display(){
 
-    size_t new_index = 0;
+    size_t new_index = 1;
     
-    while (new_index < _total)
+    while (new_index <= _total)
     {
         std::cout << std::setw(10) << new_index << "|";
         std::cout << std::setw(10) << formatField(_contacts[new_index].getFirstName()) << "|";
@@ -81,12 +83,15 @@ void PhoneBook::search()
 {
     int cmd;
 
+    if (_total == 0){
+        std::cout << "No contact in the Phonebook yet" << std::endl;
+        return ;
+    }
     std::cout << "Please enter a number between 1 to 8" << std::endl;
     PhoneBook::display();
     std::cin >> cmd;
-    if (cmd < 1 || cmd > 8){
+    if ((cmd < 1 || cmd > 8)){
         std::cout << "Invalid number" << std::endl;
         return ;
     }
-
 }
