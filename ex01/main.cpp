@@ -7,7 +7,7 @@ int main()
 
     while (1)
     {
-        std::cout << "wait for commande [ADD], [SEARCH] or [EXIT]" << '\n';
+        std::cout << "waiting for commande [ADD], [SEARCH] or [EXIT]" << '\n';
         std::cin >> cmd;
         if (cmd == "")
             return (0);

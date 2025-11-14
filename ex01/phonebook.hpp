@@ -8,10 +8,8 @@
 class PhoneBook 
 {
     private:
-        Contact contacts[8];
-        size_t  index;
-        size_t  total;
-
+        Contact _contacts[8];
+        size_t  _index;
 
     public:
         PhoneBook(); // createur
