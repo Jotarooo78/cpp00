@@ -1,7 +1,7 @@
 # ================== CONFIGURATION ================== #
 NAME      := phonebook
 CC        := c++
-CFLAGS    := -Wall -Wextra -Werror -std=c++98
+CFLAGS    := -Wall -Wextra -Werror -g -std=c++98
 OPTIONS   := -I includes
 
 SRC_FILES := main.cpp contact.cpp phonebook.cpp

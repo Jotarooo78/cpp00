@@ -3,6 +3,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include "contact.hpp"
 
 class PhoneBook 

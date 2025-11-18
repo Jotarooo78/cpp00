@@ -1,8 +1,8 @@
 #include "phonebook.hpp"
 
-PhoneBook::PhoneBook() : _index(0), _total(0){}
+PhoneBook::PhoneBook() : _index(0), _total(0){ return ;}
 
-PhoneBook::~PhoneBook(){}
+PhoneBook::~PhoneBook(){ return ;}
 
 std::string formatField(std::string field){
     if (field.length() > 10){
@@ -57,9 +57,9 @@ void PhoneBook::add()
     _contacts[_index].setDarkestSecret(cmd);
     
     _index = _index + 1;
-    if (_index > 8)
+    if (_index > 7)
         _index = 0;
-    if (_total < 9)
+    if (_total < 8)
         _total = _total + 1;
     std::cout << "New contact added" << std::endl;
     return ;
@@ -67,9 +67,9 @@ void PhoneBook::add()
 
 void PhoneBook::display(){
 
-    size_t new_index = 1;
+    size_t new_index = 0;
     
-    while (new_index <= _total)
+    while (new_index < _total)
     {
         std::cout << std::setw(10) << new_index << "|";
         std::cout << std::setw(10) << formatField(_contacts[new_index].getFirstName()) << "|";
@@ -81,17 +81,25 @@ void PhoneBook::display(){
 
 void PhoneBook::search()
 {
-    int cmd;
+    std::string input;
+    int tmp_index;
 
     if (_total == 0){
         std::cout << "No contact in the Phonebook yet" << std::endl;
         return ;
     }
-    std::cout << "Please enter a number between 1 to 8" << std::endl;
     PhoneBook::display();
-    std::cin >> cmd;
-    if ((cmd < 1 || cmd > 8)){
-        std::cout << "Invalid number" << std::endl;
+    std::cout << "Please enter an index between 0 to 7 : ";
+    std::cin >> input;
+    if (input.size() != 1 || (input[0] < '0' || input[0] > '7')){
+        std::cout << "Invalid index" << std::endl;
         return ;
     }
+    tmp_index = input[0] - '0';
+    std::cout << "First name: " << _contacts[tmp_index].getFirstName() << std::endl;
+    std::cout << "Last name: " << _contacts[tmp_index].getLastName() << std::endl;
+    std::cout << "Nickname: " << _contacts[tmp_index].getNickName() << std::endl;
+    std::cout << "Phone: " << _contacts[tmp_index].getPhoneNumber() << std::endl;
+    std::cout << "Secret: " << _contacts[tmp_index].getDarkestSecret() << std::endl;
+    return ;
 }
